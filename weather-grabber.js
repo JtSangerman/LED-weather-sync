@@ -2,14 +2,16 @@ require("dotenv").config();
 
 const APP_KEY = process.env.APP_KEY;
 const APP_ID = process.env.APP_ID;
+const ZIP_CODE = process.env.ZIP_CODE;
+const http = require("http");
 
 const get_weather = async () => {
-  const http = require("http");
   try {
     await http
       .get(
-        "http://api.weatherunlocked.com/api/current/us.97110?" +
-          "app_id=" +
+        "http://api.weatherunlocked.com/api/current/us." +
+          ZIP_CODE +
+          "?app_id=" +
           APP_ID +
           "&app_key=" +
           APP_KEY,
@@ -22,8 +24,9 @@ const get_weather = async () => {
 
           response.on("end", () => {
             console.log(
-              "Request successfully carried out to: GET http://api.weatherunlocked.com/api/current/us.97110?" +
-                "app_id=" +
+              "Request successfully carried out to: GET http://api.weatherunlocked.com/api/current/us." +
+                ZIP_CODE +
+                "?app_id=" +
                 APP_ID +
                 "&app_key=" +
                 APP_KEY
@@ -56,7 +59,7 @@ const get_weather = async () => {
 };
 
 console.clear();
-console.log("Begginning weather grabber\n\n");
+console.log("Beginning weather grabber\n\n");
 
 (async () => {
   await get_weather();
