@@ -13,6 +13,15 @@ Power supply: https://www.amazon.com/gp/product/B019Q3U72M/ref=ppx_od_dt_b_asin_
 
 Sign up for the free WeatherUnlocked api and receive your app key and app id.
 
+Install node.js and npm on your pi. Verify installed correctly with:
+
+	node -v
+	npm -v
+	
+Run on your local proj directory, run:
+
+	npm install
+
 Fill out the appropriate .env file values.
 
 Access your pi's unix/bash shell via ssh or directly.
