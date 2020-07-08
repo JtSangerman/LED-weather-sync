@@ -34,7 +34,7 @@ Run the pi config script on your pi while in your project's directory to install
 To test, I have included a script to set the lights to a desired RGB value. Run this script with `./set_lights.sh <red_rgb_val> <green_rgb_val> <blue_rgv_val>`. Ex) to test the lights, set them to all red:
 
 	chmod u+x set_lights.sh
-	./set_lights 255 0 0	
+	./set_lights 255 0 0
 
 Given all installation is correct, then began the LED weather sync service with:
 
@@ -51,14 +51,19 @@ Feel free to mess with some other scripts in the repo. For example, for random s
 	chmod u+x disco_lights.sh
 	./disco_lights.sh
 	
+To set a one time random rgb color:
+
+	chmod u+x set_random.sh
+	./set_random.sh
+	
 For police sirens:
 
-	chmod u_x police_sirens.sh
+	chmod u+x police_sirens.sh
 	./police_sirens.sh
 
 Shut lights off (all values to 0)
 
-	chmod u_x lights_off.sh
+	chmod u+x lights_off.sh
 	./lights_off.sh
 	
 You can use command `node rand-1to255.js` to generate a single random value [0,255] or `node random-rbg.js` for a full random rgb value. Pipe or input the output to your bash script appropriately.
