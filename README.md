@@ -31,6 +31,11 @@ Run the pi config script on your pi while in your project's directory to install
 	chmod u+x pi-config.sh
 	./pi-config.sh
 	
+Boot pigpiod (if you ever run into permission or 'already running' errors for setting pin values, run this script to reboot pigpiod):
+	
+	chmod u+x boot_pigpiod.sh
+	./boot_pigpiod.sh
+	
 To test, I have included a script to set the lights to a desired RGB value. Run this script with `./set_lights.sh <red_rgb_val> <green_rgb_val> <blue_rgv_val>`. Ex) to test the lights, set them to all red:
 
 	chmod u+x set_lights.sh
