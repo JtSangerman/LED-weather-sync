@@ -1,78 +1,52 @@
 require("dotenv").config();
-const http = require("http");
+var unirest = require("unirest");
+var req = unirest("GET", "https://tides.p.rapidapi.com/tides");
 
-const API_KEY = process.env.TIDES_API_KEY;
+const API_KEY = process.env.RAPID_API_KEY;
+const LAT = process.env.LAT;
+const LON = process.env.LON;
+const RED_PIN_NO = process.env.RED_PIN_NO;
+const GREEN_PIN_NO = process.env.GREEN_PIN_NO;
+const BLUE_PIN_NO = process.env.BLUE_PIN_NO;
 
-const TIDES_URL = "http://www.worldtides.info/api/v2";
 const get_tides_info = async () => {
   return new Promise(async (resolve, reject) => {
     try {
-      await http
-        .get(CURRENT_URL, response => {
-          let data = "";
+      req.query({
+        interval: "60",
+        latitude: LAT,
+        longitude: LON
+      });
 
-          response.on("data", chunk => {
-            data += chunk;
-          });
+      req.headers({
+        "x-rapidapi-host": "tides.p.rapidapi.com",
+        "x-rapidapi-key": API_KEY,
+        useQueryString: true
+      });
 
-          response.on("end", () => {
-            resolve(JSON.parse(data));
-          });
-        })
-        .on("error", err => {
-          return null;
-        });
+      req.end(result => {
+        //console.log(result);
+        resolve(result.body);
+      });
     } catch (err) {
+      resolve(null);
       return null;
     }
   });
-};
-
-const get_high_and_low = async () => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      await http
-        .get(FORECAST_URL, response => {
-          let data = "";
-
-          response.on("data", chunk => {
-            data += chunk;
-          });
-
-          response.on("end", () => {
-            let forecast = JSON.parse(data);
-            let today = forecast.Days[0];
-            resolve([today.temp_min_f, today.temp_max_f]);
-          });
-        })
-        .on("error", err => {
-          return null;
-        });
-    } catch (err) {
-      return null;
-    }
-  });
-};
-
-const get_red_value = () => {
-  return 255;
-};
-
-const get_blue_value = () => {
-  return 255;
-};
-
-const get_green_value = () => {
-  return 255;
 };
 
 (async () => {
-  let weather = await get_current_weather();
-  let [low, high] = await get_high_and_low();
+  let tides_info = await get_tides_info();
+  let current_height_info = tides_info.heights[0];
 
-  let red = get_red_value();
-  let green = get_green_value();
-  let blue = get_blue_value();
+  let [red, green, blue] = [0, 0, 0];
+
+  let status = current_height_info.state;
+  if (status == "RISING") {
+    [red, green, blue] = [127, 127, 127];
+  } else {
+    [red, green, blue] = [30, 0, 127];
+  }
 
   console.log("pigs p " + RED_PIN_NO + " " + red);
   console.log("pigs p " + GREEN_PIN_NO + " " + green);

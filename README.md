@@ -1,6 +1,8 @@
 # LED-weather-sync
 Code for Raspberry Pi project to sync LED lights to real-time weather data, pulled from the WeatherUnlocked api every 5s (adjustable). In this repository is a diagram the wiring config I used. Feel free to use your own, but do substitute all pin numbers with the correct ones. 
 
+UPDATE: This project also has support for tide data, pulled from the RapidAPI's tide data service. Fill out appropriate tides API key in the .env file, along with the desired LAT and LON for configuration of this service.
+
 LED strip: https://www.amazon.com/gp/product/B006LW2NJM/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
 Mosfets: https://www.amazon.com/gp/product/B071Z98SRG/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1 (comes with 5, uses 3)
@@ -43,13 +45,18 @@ To test, I have included a script to set the lights to a desired RGB value. Run 
 
 Given all installation is correct, then began the LED weather sync service with:
 
-	chmod u+x LED_service.sh
-	./LED_service.sh
+	chmod u+x WEATHER_LED_SYNC_SERVICE.sh
+	./WEATHER_LED_SYNC_SERVICE.sh
 
+OR the tides LED sync service with:
 
+	chmod u+x TIDES_LED_SYNC_SERVICE.sh
+	./TIDES_LED_SYNC_SERVICE.sh
 ---------------
 
 The weather grabber code is not done. The only thing left is to derive RGB values based off the current/forecasted weather conditions, which may be better to be implemented to one's own desires. Once I have decided on how to derive my RGB values, the repo will be updated.
+
+The tide grabber code is also a work in process. At the moment, it will hue white for rising and blue for lowering. At some point, derivation of rgb values will be implemented for rate of tide change, low/high, HAT/LAT etc.
 
 Feel free to mess with some other scripts in the repo. For example, for random strobe, run:
 
