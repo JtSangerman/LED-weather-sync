@@ -1,5 +1,5 @@
 # LED-weather-sync
-Code for Raspberry Pi project to sync LED lights to real-time weather data, pulled from the WeatherUnlocked api. In this repository is a diagram the wiring config I used. Feel free to use your own, but do substitute all pin numbers with the correct ones.
+Code for Raspberry Pi project to sync LED lights to real-time weather data, pulled from the WeatherUnlocked api every 5s (adjustable). In this repository is a diagram the wiring config I used. Feel free to use your own, but do substitute all pin numbers with the correct ones. 
 
 LED strip: https://www.amazon.com/gp/product/B006LW2NJM/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
@@ -57,6 +57,7 @@ For police sirens:
 	./police_sirens.sh
 
 Shut lights off (all values to 0)
+
 	chmod u_x lights_off.sh
 	./lights_off.sh
 	
