@@ -48,6 +48,18 @@ const get_tides_info = async () => {
     [red, green, blue] = [30, 0, 127];
   }
 
+  // the lights can be intense at times in a dark room at night,
+  // so we tone down the lights to be easier on the eyes
+  // after 9pm system time
+  let now = new Date();
+  if (now.getHours() >= 21) {
+    if ((status = "RISING")) {
+      [red, green, blue] = [red / 4, green / 4, blue / 4];
+    } else {
+      [red, green, blue] = [red / 2, green / 2, blue / 2];
+    }
+  }
+
   console.log("pigs p " + RED_PIN_NO + " " + red);
   console.log("pigs p " + GREEN_PIN_NO + " " + green);
   console.log("pigs p " + BLUE_PIN_NO + " " + blue);
