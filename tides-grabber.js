@@ -35,6 +35,14 @@ const get_tides_info = async () => {
   });
 };
 
+const div_rgb_floor = (red, green, blue, denom) => {
+  return [
+    Math.floor(red / denom),
+    Math.floor(green / denom),
+    Math.floor(blue / denom)
+  ];
+};
+
 (async () => {
   let tides_info = await get_tides_info();
   let current_height_info = tides_info.heights[0];
@@ -51,12 +59,14 @@ const get_tides_info = async () => {
   // the lights can be intense at times in a dark room at night,
   // so we tone down the lights to be easier on the eyes
   // after 9pm system time
-  let now = new Date();
-  if (now.getHours() >= 21) {
+  let time = new Date(
+    new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
+  );
+  if (time.getHours() >= 22 || time.getHours() <= 8) {
     if ((status = "RISING")) {
-      [red, green, blue] = [red / 4, green / 4, blue / 4];
+      [red, green, blue] = div_rgb_floor(red, green, blue, 4);
     } else {
-      [red, green, blue] = [red / 2, green / 2, blue / 2];
+      [red, green, blue] = div_rgb_floor(red, green, blue, 2);
     }
   }
 
