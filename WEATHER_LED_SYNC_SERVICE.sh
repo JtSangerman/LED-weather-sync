@@ -11,5 +11,5 @@ do
 	echo "RGB values set:"
 	cat rgb_vals_temp
 	rm rgb_vals_temp
-	sleep 5
+	sleep 5m
 done
