@@ -1,8 +1,6 @@
 # LED-weather-sync
 Code for Raspberry Pi project to sync LED lights to real-time weather data, pulled from the WeatherUnlocked api every 5s (adjustable). In this repository is a diagram the wiring config I used. Feel free to use your own, but do substitute all pin numbers with the correct ones. 
 
-UPDATE: This project also has support for tide data, pulled from the RapidAPI's tide data service. Fill out appropriate tides API key in the .env file, along with the desired LAT and LON for configuration of this service.
-
 LED strip: https://www.amazon.com/gp/product/B006LW2NJM/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
 Mosfets: https://www.amazon.com/gp/product/B071Z98SRG/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1 (comes with 5, uses 3)
@@ -53,11 +51,6 @@ OR the tides LED sync service with:
 	chmod u+x TIDES_LED_SYNC_SERVICE.sh
 	./TIDES_LED_SYNC_SERVICE.sh
 ---------------
-
-The weather grabber code is not done. The only thing left is to derive RGB values based off the current/forecasted weather conditions, which may be better to be implemented to one's own desires. Once I have decided on how to derive my RGB values, the repo will be updated.
-
-The tide grabber code is also a work in process. At the moment, it will hue white for rising and blue for lowering. At some point, derivation of rgb values will be implemented for rate of tide change, low/high, HAT/LAT etc.
-
 Feel free to mess with some other scripts in the repo. For example, for random strobe, run:
 
 	chmod u+x disco_lights.sh
@@ -79,3 +72,5 @@ Shut lights off (all values to 0)
 	./lights_off.sh
 	
 You can use command `node rand-1to255.js` to generate a single random value [0,255] or `node random-rbg.js` for a full random rgb value. Pipe or input the output to your bash script appropriately.
+
+I have configured my pi to run the `WEATHER_LED_SYNC_SERVICE.sh` on startup which has proved to work very well.
