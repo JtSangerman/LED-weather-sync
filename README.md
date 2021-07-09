@@ -14,7 +14,7 @@ Power supply: https://www.amazon.com/gp/product/B019Q3U72M/ref=ppx_od_dt_b_asin_
 WIRING CONFIGURATION:
 
 
-![Pi to LED strip wiring config](https://github.com/JtSangerman/LED-weather-sync/edit/master/wiring_config.png)
+![Pi to LED strip wiring config](https://github.com/JtSangerman/LED-weather-sync/blob/master/wiring_config.png)
 
 
 Sign up for the free WeatherUnlocked api and receive your app key and app id.
