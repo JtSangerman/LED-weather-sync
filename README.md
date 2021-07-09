@@ -16,6 +16,8 @@ WIRING CONFIGURATION:
 
 ![Pi to LED strip wiring config](https://github.com/JtSangerman/LED-weather-sync/blob/master/wiring_config.png)
 
+Note: It is possible to use your own custom pin out number, but do be sure to update the .env file to reflect these changes.
+
 
 Sign up for the free WeatherUnlocked api and receive your app key and app id.
 
