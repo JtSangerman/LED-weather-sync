@@ -1,5 +1,5 @@
 # LED-weather-sync
-Code for Raspberry Pi project to sync LED lights to real-time weather data, pulled from the WeatherUnlocked api every 5s (adjustable). In this repository is a diagram the wiring config I used. Feel free to use your own, but do substitute all pin numbers with the correct ones. 
+Code for Raspberry Pi project to sync LED lights to real-time weather data, pulled from the WeatherUnlocked api every 5s (adjustable). 
 
 LED strip: https://www.amazon.com/gp/product/B006LW2NJM/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
@@ -10,6 +10,12 @@ Breadboard: https://www.amazon.com/gp/product/B01EV6LJ7G/ref=ppx_yo_dt_b_asin_ti
 Jumper wires: https://www.amazon.com/gp/product/B01LZF1ZSZ/ref=ppx_od_dt_b_asin_title_s00?ie=UTF8&psc=1 (comes with many, uses few)
 
 Power supply: https://www.amazon.com/gp/product/B019Q3U72M/ref=ppx_od_dt_b_asin_title_s00?ie=UTF8&psc=1
+
+WIRING CONFIGURATION:
+
+
+![Pi to LED strip wiring config](https://github.com/JtSangerman/LED-weather-sync/edit/master/wiring_config.png)
+
 
 Sign up for the free WeatherUnlocked api and receive your app key and app id.
 
